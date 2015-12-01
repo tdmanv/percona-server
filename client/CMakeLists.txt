@@ -24,6 +24,7 @@ INCLUDE_DIRECTORIES(
   ${CMAKE_SOURCE_DIR}/strings
   ${MY_READLINE_INCLUDE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}/plugin/semisync
 )
 
 
@@ -64,7 +65,7 @@ TARGET_LINK_LIBRARIES(mysql_plugin perconaserverclient)
 
 MYSQL_ADD_EXECUTABLE(mysqlbinlog mysqlbinlog.cc sql_string.cc
                      ../sql/rpl_filter.cc ../sql/sql_list.cc)
-TARGET_LINK_LIBRARIES(mysqlbinlog perconaserverclient)
+TARGET_LINK_LIBRARIES(mysqlbinlog perconaserverclient semisync_slave_client)
 
 MYSQL_ADD_EXECUTABLE(mysqladmin mysqladmin.cc)
 TARGET_LINK_LIBRARIES(mysqladmin perconaserverclient)
