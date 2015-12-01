@@ -78,8 +78,11 @@ public:
   int slaveReply(MYSQL *mysql, const char *binlog_filename,
                  my_off_t binlog_filepos);
 
+  int slaveRequestDump(MYSQL *mysql);
+#ifndef MYSQL_CLIENT
   int slaveStart(Binlog_relay_IO_param *param);
   int slaveStop(Binlog_relay_IO_param *param);
+#endif
 
 private:
   /* True when initObject has been called */
