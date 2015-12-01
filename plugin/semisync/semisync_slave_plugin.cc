@@ -99,7 +99,7 @@ int repl_semi_slave_request_dump(Binlog_relay_IO_param *param,
   }
   mysql_free_result(mysql_store_result(mysql));
   rpl_semi_sync_slave_status= 1;
-  return 0;
+  return repl_semisync.slaveRequestDump(param->mysql);
 }
 
 int repl_semi_slave_read_event(Binlog_relay_IO_param *param,
